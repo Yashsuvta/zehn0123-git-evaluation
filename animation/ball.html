@@ -1,70 +1,389 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ball</title>
-    <link rel="stylesheet" href="ball.css">
-    <script src="jquery-3.6.0.js"></script>
-</head>
-<body>
-    <div class="bulding"></div>
-    <div class="bulding1"></div>
-    <div class="bulding2"></div>
-    <div class="bulding3"></div>
-    <div class="bulding4"></div>
-    <div class="bulding5"></div>
-    <div class="bulding6"></div>
-    <div class="bulding7"></div>
-    <div class="bulding8"></div>
-    <div class="bulding9"></div>
-    <div class="ball"></div>
-    <!-- <button type="button" class="btn"> START</button> -->
-    <script>
-     $(document).ready(function(){
-        $('.ball').hide();
-     $(".btn").click(function(){
-        // $('.ball').show();
-        $('.btn').hide();
-     });
-    });
-    //  $('.bulding').click(function(){
-    //    $('.ball').css({"bottom":"200px", "left":"0" });
-    // });
-    // $('.bulding1').click(function(){
-    //    $('.ball').animate({"bottom":"100px","left":"150px","rotate":"135deg" });
-    //  });
-    //  $('.bulding2').click(function(){
-    //    $('.ball').animate({"bottom":"200px", "left":"300px" });
-    //  });
-    //  $('.bulding3').click(function(){
-    //    $('.ball').animate({"bottom":"250px", "left":"450px" });
-    //  });
-    //  $('.bulding4').click(function(){
-    //    $('.ball').animate({"bottom":"150px", "left":"600px" });
-    //  });
-    //  $('.bulding5').click(function(){
-    //    $('.ball').animate({"bottom":"230px", "left":"750px" });
-    //  });
-    //  $('.bulding6').click(function(){
-    //    $('.ball').animate({"bottom":"190px", "left":"900px" });
-    //  });
-    //  $('.bulding7').click(function(){
-    //    $('.ball').animate({"bottom":"150px", "left":"1050px" });
-    //  });
-    //  $('.bulding8').click(function(){
-    //    $('.ball').animate({"bottom":"250px", "left":"1200px" });
-    //  });
-    //  $('.bulding9').click(function(){
-    //    $('.ball').animate({"bottom":"150px", "left":"1350px" });
-    //  });
-    // });
+<html>
 
-    
-    
-    
-        
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .dropdown {
+            position: absolute;
+            top: 50%;
+        }
+
+        /* ------------------flip----------------------------- */
+        .box {
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .box .mystyle {
+            width: 100%;
+            padding: 25px;
+            position: absolute;
+            top: 0;
+            background-color: coral;
+            color: white;
+            font-size: 25px;
+            box-sizing: border-box;
+
+        }
+
+        .box .div-style {
+            width: 100%;
+            padding: 25px;
+            background-color: yellow;
+            color: black;
+            font-size: 25px;
+            box-sizing: border-box;
+            opacity: 0;
+            z-index: 1;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transform: translateY(110px) rotateX(-90deg);
+            box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .box:hover .div-style {
+            opacity: 1;
+            transform: rotateX(0deg);
+        }
+
+        .box:hover .mystyle {
+            opacity: 0;
+            transform: translateY(-110px) rotateX(90deg);
+        }
+
+/* ----------------------flip------------------------------ */
+
+/* ----------------------slide----------------------------- */
+
+ .box .slide-style-front {
+  width: 100%;
+  padding: 25px;
+  position:absolute;
+  top:0;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+
+}
+ .box .slide-style-back{
+  width: 100%;
+  padding: 25px;
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+  box-sizing: border-box;
+  opacity:0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translateY(100%);
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+}
+
+.box:hover .slide-style-back{
+    opacity: 1;
+    transform: translateY(0%)
+}
+.box:hover .slide-style-front{
+    opacity: 0;
+}
+
+/* ---------------------------slide----------------------------- */
+
+/* ---------------------------push------------------------------- */
+.box .push-style-front {
+  width: 100%;
+  padding: 25px;
+  position:absolute;
+  top:0;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+}
+ .box .push-style-back{
+  width: 100%;
+  padding: 25px;
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+  box-sizing: border-box;
+  opacity:0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: translateY(100%);
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+}
+.box:hover .push-style-back{
+    opacity: 1;
+    transform: translateY(0)
+}
+.box:hover .push-style-front{
+    opacity: 0;
+    transform: translateY(-100%);
+}
+/* ---------------------------push------------------------------- */
+
+/* ---------------------------Zoom In---------------------------- */
+.box .zoom-in-style-front {
+  width: 100%;
+  padding: 25px;
+  position:absolute;
+  top:0;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+
+}
+ .box .zoom-in-style-back{
+  width: 100%;
+  padding: 25px;
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+  box-sizing: border-box;
+  opacity:0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+  transform: scale(0);
+}
+.box:hover .zoom-in-style-back{
+    opacity: 1;
+    transform: scale(1);
+}
+.box:hover .zoom-in-style-front{
+    opacity: 0;
+}
+/* ---------------------------Zoom In---------------------------- */
+
+/* ---------------------------Zoom Out---------------------------- */
+.box .zoom-out-style-front {
+  width: 100%;
+  padding: 25px;
+  position:absolute;
+  top:0;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+
+}
+ .box .zoom-out-style-back{
+  width: 100%;
+  padding: 25px;
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+  box-sizing: border-box;
+  opacity:0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+}
+.box:hover .zoom-out-style-back{
+    opacity: 1;
+}
+.box:hover .zoom-out-style-front{
+    opacity: 0;
+    transform: scale(0)
+}
+/* ---------------------------Zoom Out---------------------------- */
+
+/* ---------------------------Zoom Out---------------------------- */
+.box .fade-style-front {
+  width: 100%;
+  padding: 25px;
+  position:absolute;
+  top:0;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+  box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+
+}
+ .box .fade-style-back{
+  width: 100%;
+  padding: 25px;
+  background-color: yellow;
+  color: black;
+  font-size: 25px;
+  box-sizing: border-box;
+  opacity:0;
+  z-index: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  box-shadow: 0px 5px 20px 0px rgba(0, 81, 250, 0.1);
+  transition: all 0.5s ease;
+}
+.box:hover .fade-style-back{
+    opacity: 1;
+    animation: fadeAnimation ease;
+}
+@keyframes fadeAnimation {
+    0% {
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.box:hover .fade-style-front{
+    opacity: 0;
+}
+/* ---------------------------Zoom Out---------------------------- */
+
+#col1{
+    padding: 0%;
+}
+.btn{
+    margin-left: 10px;
+    padding: 10px;
+    width: 150px;
+}
+.btn1{
+    padding: 10px;
+    width: 150px;
+    /* margin-left: 10px; */
+}
+.btn .s{
+    float:left;
+}
+.btn #i{
+    float: right;
+}
+#icon{
+    padding: 20px;
+}
+.btn1{
+    border-end-end-radius: 30px;
+    border-top-right-radius: 30px;
+    }
+</style>
+</head>
+
+<body>
+
+    <div class="box" id="box">
+
+        <div id="myDIV" class="slide-style-front">
+            This is a DIV element.
+        </div>
+        <div id="mydiv2" class="slide-style-back">
+            Test div
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><button onclick="changeStyle('flip')">flip</button></li>
+            <li><button onclick="changeStyle('slide')">slide</button></li>
+            <li><button onclick="changeStyle('push')">push</button></li>
+            <li><button onclick="changeStyle('zoom-in')">Zoom-In</button></li>
+            <li><button onclick="changeStyle('zoom-out')">Zoom-Out</button></li>
+            <li><button onclick="changeStyle('fade')">Fade</button></li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5" id="col1">
+                <div>
+                <button class="btn"><i id="i" class="fa fa-heart"></i><span class="s">flip</span></button>
+                <button class="btn"><i id="i" class="fa fa-heart"></i><span class="s">flip</span></button>
+                <button class="btn"><i id="i" class="fa fa-heart"></i><span class="s">flip</span></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="#"><i class="fa fa-heart" id="icon"></i></a>
+                <a href="#"><i class="fa fa-cloud" id="icon"></i></a>
+                <a href="#"><i class="fa fa-car" id="icon"></i></a>
+                <a href="#"><i class="fa fa-file" id="icon"></i></a>
+                <a href="#"><i class="fa fa-bars" id="icon"></i></a>
+            </div>
+            <div class="col-md-4">
+                <button class="btn1" >flip</button>
+                <button class="btn">flip</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid" style="border: 2px solid black;">
+        <div class="row" style="padding:5px;">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="container">
+                    <div class="row" style="padding:5px;">
+                    <div class="col-sm-4" style="border: 2px solid black;">
+                        <h1>Hello</h1>
+                    </div>
+                    <div class="col-sm-4" style="border: 2px solid black;"><h1>Hello</h1></div>
+                    <div class="col-sm-4" style="border: 2px solid black;"><h1>Hello</h1></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <script>
+        function changeStyle(type) {
+            var element = document.getElementById("myDIV");
+            var element2 = document.getElementById("mydiv2");
+            if (type == 'flip') {
+                element.setAttribute('class', 'mystyle');
+                element2.setAttribute('class', 'div-style');
+            }else if(type == 'slide'){
+                element.setAttribute('class', 'slide-style-front');
+                element2.setAttribute('class', 'slide-style-back');
+            }else if(type == 'push'){
+                element.setAttribute('class', 'push-style-front');
+                element2.setAttribute('class', 'push-style-back');
+            }else if(type == 'zoom-in'){
+                element.setAttribute('class', 'zoom-in-style-front');
+                element2.setAttribute('class', 'zoom-in-style-back');
+            }else if(type == 'zoom-out'){
+                element.setAttribute('class', 'zoom-out-style-front');
+                element2.setAttribute('class', 'zoom-out-style-back');
+            }else if(type == 'fade'){
+                element.setAttribute('class', 'fade-style-front');
+                element2.setAttribute('class', 'fade-style-back');
+            }
+        }
+        // function changeStyle(type) {
+        //     var element = document.getElementById("myDIV");
+        //     var element2 = document.getElementById("mydiv2");
+
+        //     element.setAttribute('class', 'mystyle');
+        //     element2.setAttribute('class', 'div-style');
+
+        // }
     </script>
 </body>
+
 </html>
